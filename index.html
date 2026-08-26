@@ -36,6 +36,8 @@
   "priceRange":"$400 - $650+",
   "image":"https://amazingmrtwist.com/images/mr_twist_top_hat_dove.jpg",
   "address":{"@type":"PostalAddress","addressLocality":"Mount Waverley","addressRegion":"VIC","addressCountry":"AU"},
+  "geo":{"@type":"GeoCoordinates","latitude":-37.9287611,"longitude":145.3182996},
+  "hasMap":"https://www.google.com/maps/place/Amazing+Mr+Twist/@-37.9287611,145.3182996,15z/data=!4m6!3m5!1s0x6ad63ba196d91bfd:0xc98ca372d53d4c1e!8m2!3d-37.9287611!4d145.3182996!16s%2Fg%2F11hbnt5p46",
   "areaServed":{"@type":"State","name":"Victoria, Australia"},
   "sameAs":["https://www.amazingmrtwist.com","https://www.bark.com/en/au/company/amazing-mr-twist/Vkvkn/","http://www.womo.com.au/reviews/Amazing-Mr--Twist-Mount-Waverley/","https://www.youtube.com/watch?v=myd9i4Vv0OQ"],
   "hasOfferCatalog":{
@@ -105,13 +107,15 @@ nav.top { position: sticky; top: 0; z-index: 100; background: rgba(10,14,27,0.95
 .mobile-menu .mob-cta { border: 1px solid var(--gold); color: var(--gold) !important; padding: 14px 36px; border-radius: 100px; font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; }
 
 /* HERO */
-.hero { position: relative; padding: 90px 28px 100px; text-align: center; overflow: hidden; background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(212,165,116,0.14) 0%, transparent 65%), radial-gradient(ellipse 40% 50% at 20% 80%, rgba(123,79,171,0.12) 0%, transparent 60%), var(--bg); }
-.hero-tag { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(212,165,116,0.4); background: rgba(10,14,27,0.5); padding: 8px 20px; border-radius: 100px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+.hero { position: relative; padding: 70px 28px 90px; overflow: hidden; background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(212,165,116,0.14) 0%, transparent 65%), radial-gradient(ellipse 40% 50% at 20% 80%, rgba(123,79,171,0.12) 0%, transparent 60%), var(--bg); }
+.hero-inner { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero-content { text-align: left; }
+.hero-tag { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(212,165,116,0.4); background: rgba(10,14,27,0.5); padding: 8px 20px; border-radius: 100px; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
 .hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
-.hero h1 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(2.2rem, 6vw, 4.5rem); letter-spacing: 0.01em; line-height: 1.05; margin-bottom: 22px; max-width: 15ch; margin-inline: auto; }
+.hero h1 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(1.9rem, 3.4vw, 2.9rem); letter-spacing: 0.01em; line-height: 1.12; margin-bottom: 18px; max-width: 14ch; }
 .hero h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
-.hero .lede { color: var(--text-soft); font-size: clamp(1rem, 1.6vw, 1.2rem); max-width: 620px; margin: 0 auto 40px; font-weight: 300; line-height: 1.7; }
-.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+.hero .lede { color: var(--text-soft); font-size: clamp(0.94rem, 1.1vw, 1.02rem); max-width: 480px; margin: 0 0 32px; font-weight: 300; line-height: 1.7; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 0; }
 .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 34px; border-radius: 100px; font-family: 'Inter', sans-serif; font-size: 0.86rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; cursor: pointer; border: 1.5px solid transparent; }
 .btn-gold { background: var(--gold); color: var(--bg); }
 .btn-gold:hover { background: var(--gold-warm); transform: translateY(-2px); box-shadow: 0 12px 32px var(--gold-glow); }
@@ -119,10 +123,10 @@ nav.top { position: sticky; top: 0; z-index: 100; background: rgba(10,14,27,0.95
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
 /* HERO VIDEO */
-.hero-video { max-width: 1000px; margin: 0 auto; position: relative; }
+.hero-video { position: relative; }
 .video-frame { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 40px 120px -20px rgba(0,0,0,0.9), 0 0 60px -20px var(--gold-glow); background: #000; }
 .video-frame video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
-.video-frame .video-badge { position: absolute; top: 16px; left: 16px; background: rgba(10,14,27,0.85); backdrop-filter: blur(8px); border: 1px solid var(--gold); color: var(--gold); padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; z-index: 5; }
+.video-frame .video-badge { position: absolute; top: 16px; left: 16px; background: rgba(10,14,27,0.85); backdrop-filter: blur(8px); border: 1px solid var(--gold); color: var(--gold); padding: 6px 14px; border-radius: 100px; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; z-index: 5; }
 
 /* SECTIONS */
 section { padding: 90px 0; position: relative; z-index: 2; }
@@ -161,7 +165,7 @@ section { padding: 90px 0; position: relative; z-index: 2; }
 /* GALLERY */
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .gallery-item { position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 1/1; cursor: pointer; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transition: transform 0.6s; }
 .gallery-item:hover img { transform: scale(1.05); }
 .gallery-item .caption { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,14,27,0.85) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 18px; color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
 .gallery-item:hover .caption { opacity: 1; }
@@ -258,6 +262,12 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
   .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
+  .hero-inner { grid-template-columns: 1fr; gap: 44px; }
+  .hero-content { text-align: center; }
+  .hero h1 { max-width: none; margin-inline: auto; }
+  .hero .lede { margin-inline: auto; max-width: 560px; }
+  .hero-btns { justify-content: center; }
+  .hero-video { max-width: 640px; margin: 0 auto; }
 }
 @media (max-width: 780px) {
   .wrap { padding: 0 24px; }
@@ -303,19 +313,23 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-tag"><span class="dot"></span> Melbourne · Regional Victoria · All Events</div>
-  <h1>Live magic that leaves guests <em>speechless</em>.</h1>
-  <p class="lede">Professional stage magic and roving close-up entertainment — kids parties, corporate events, adult themed shows, weddings and everything in between. Real doves, fire magic, comedy ventriloquism and audience participation that transforms any event.</p>
-  <div class="hero-btns">
-    <a class="btn btn-gold" href="#contact">Book Amazing Mr Twist</a>
-    <a class="btn btn-outline" href="#services">See Services &amp; Pricing</a>
-  </div>
-  <div class="hero-video">
-    <div class="video-frame">
-      <div class="video-badge">Live · Tissue → Flame → Dove</div>
-      <video controls playsinline preload="metadata" muted poster="/videos/hero_poster.jpg" aria-label="Amazing Mr Twist performing the tissue to flame to live dove magic effect at an outdoor event">
-        <source src="/videos/hero_tissue_flame_dove.mp4" type="video/mp4">
-      </video>
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-tag"><span class="dot"></span> Melbourne · Regional Victoria · All Events</div>
+      <h1>Live magic that leaves guests <em>speechless</em>.</h1>
+      <p class="lede">Professional stage magic and roving close-up entertainment — kids parties, corporate events, adult themed shows, weddings and everything in between. Real doves, fire magic, comedy ventriloquism and audience participation that transforms any event.</p>
+      <div class="hero-btns">
+        <a class="btn btn-gold" href="#contact">Book Amazing Mr Twist</a>
+        <a class="btn btn-outline" href="#services">See Services &amp; Pricing</a>
+      </div>
+    </div>
+    <div class="hero-video reveal">
+      <div class="video-frame">
+        <div class="video-badge">Live · Tissue → Flame → Dove</div>
+        <video controls playsinline preload="metadata" muted poster="/videos/hero_poster.jpg" aria-label="Amazing Mr Twist performing the tissue to flame to live dove magic effect at an outdoor event">
+          <source src="/videos/hero_tissue_flame_dove.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
   </div>
 </section>
@@ -549,7 +563,7 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
         </div>
       </div>
       <div class="about-visual reveal">
-        <img src="/images/mr_twist_classic_magician_dove_rabbit.jpg" alt="Dan Stewart — Amazing Mr Twist — professional magician holding rabbit and dove" />
+        <img src="/images/captain_twist_sword.jpg" alt="Dan Stewart as Captain Twist — Amazing Mr Twist pirate character aboard a ship" />
       </div>
     </div>
   </div>
@@ -589,6 +603,7 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
     <a href="tel:+61425828503">0425 828 503</a>
     <a href="mailto:mrtwist.DS@gmail.com">mrtwist.DS@gmail.com</a>
     <a href="https://www.amazingmrtwist.com" target="_blank" rel="noopener">amazingmrtwist.com</a>
+    <a href="https://www.google.com/maps/place/Amazing+Mr+Twist/@-37.9287611,145.3182996,15z/data=!4m6!3m5!1s0x6ad63ba196d91bfd:0xc98ca372d53d4c1e!8m2!3d-37.9287611!4d145.3182996!16s%2Fg%2F11hbnt5p46" target="_blank" rel="noopener">Get Directions</a>
   </div>
 </div>
 
@@ -621,7 +636,7 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
         <h5>Contact</h5>
         <a href="tel:+61425828503">0425 828 503</a>
         <a href="mailto:mrtwist.DS@gmail.com">mrtwist.DS@gmail.com</a>
-        <p>Mount Waverley, VIC</p>
+        <a href="https://www.google.com/maps/place/Amazing+Mr+Twist/@-37.9287611,145.3182996,15z/data=!4m6!3m5!1s0x6ad63ba196d91bfd:0xc98ca372d53d4c1e!8m2!3d-37.9287611!4d145.3182996!16s%2Fg%2F11hbnt5p46" target="_blank" rel="noopener">Mount Waverley, VIC</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
       </div>
