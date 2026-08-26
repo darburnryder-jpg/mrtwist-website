@@ -33,7 +33,6 @@
   "url":"https://amazingmrtwist.com",
   "telephone":"+61425828503",
   "email":"mrtwist.DS@gmail.com",
-  "priceRange":"$400 - $650+",
   "image":"https://amazingmrtwist.com/images/mr_twist_top_hat_dove.jpg",
   "address":{"@type":"PostalAddress","addressLocality":"Mount Waverley","addressRegion":"VIC","addressCountry":"AU"},
   "geo":{"@type":"GeoCoordinates","latitude":-37.9287611,"longitude":145.3182996},
@@ -43,9 +42,9 @@
   "hasOfferCatalog":{
     "@type":"OfferCatalog","name":"Magic Entertainment Services",
     "itemListElement":[
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Roving Close-Up Magic"},"price":"450","priceCurrency":"AUD","description":"First hour, $200 per additional hour"},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"30-Minute Magic Show"},"price":"450","priceCurrency":"AUD"},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Magic Show plus Roving Magic"},"price":"600","priceCurrency":"AUD","description":"30-min show + first hour roving, $200 per additional hour"}
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Roving Close-Up Magic","description":"Mingling sleight-of-hand magic for guests during cocktail hours, dinner service or receptions."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"30-Minute Magic Show","description":"A high-energy stage show with live doves, fire magic, comedy ventriloquism and audience participation."}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Magic Show plus Roving Magic","description":"The full stage show combined with roving close-up magic or balloon twisting."}}
     ]
   }
 }
@@ -128,6 +127,12 @@ nav.top { position: sticky; top: 0; z-index: 100; background: rgba(10,14,27,0.95
 .video-frame video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
 .video-frame .video-badge { position: absolute; top: 16px; left: 16px; background: rgba(10,14,27,0.85); backdrop-filter: blur(8px); border: 1px solid var(--gold); color: var(--gold); padding: 6px 14px; border-radius: 100px; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; z-index: 5; }
 
+/* STATS BAR */
+.stats-bar { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 44px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; text-align: center; }
+.stat .stat-num { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--gold); line-height: 1; margin-bottom: 8px; }
+.stat .stat-label { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); font-weight: 500; }
+
 /* SECTIONS */
 section { padding: 90px 0; position: relative; z-index: 2; }
 .sec-head { text-align: center; margin-bottom: 56px; }
@@ -153,12 +158,14 @@ section { padding: 90px 0; position: relative; z-index: 2; }
 
 /* SERVICES */
 .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
-.svc-card { border: 1px solid var(--line); border-radius: 20px; padding: 40px 32px; background: var(--panel); transition: border-color 0.25s, transform 0.25s; display: flex; flex-direction: column; }
+.svc-card { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--panel); transition: border-color 0.25s, transform 0.25s; display: flex; flex-direction: column; }
 .svc-card:hover { border-color: rgba(212,165,116,0.5); transform: translateY(-4px); }
-.svc-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(212,165,116,0.12); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; color: var(--gold); font-size: 1.4rem; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
-.svc-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 500; letter-spacing: 0.02em; margin-bottom: 8px; }
-.svc-card .price { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.15rem; font-style: italic; margin-bottom: 18px; }
-.svc-card > p { color: var(--text-soft); font-size: 0.95rem; margin-bottom: 24px; flex: 1; }
+.svc-photo { aspect-ratio: 16/10; overflow: hidden; }
+.svc-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transition: transform 0.5s; }
+.svc-card:hover .svc-photo img { transform: scale(1.04); }
+.svc-body { padding: 32px 32px 36px; display: flex; flex-direction: column; flex: 1; }
+.svc-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 500; letter-spacing: 0.02em; margin-bottom: 14px; }
+.svc-card > .svc-body > p { color: var(--text-soft); font-size: 0.95rem; margin-bottom: 24px; flex: 1; }
 .svc-card .learn-more { color: var(--gold); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; padding-bottom: 2px; border-bottom: 1px solid rgba(212,165,116,0.3); align-self: flex-start; transition: border-color 0.2s; }
 .svc-card .learn-more:hover { border-color: var(--gold); }
 
@@ -258,6 +265,7 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
 /* RESPONSIVE */
 @media (max-width: 1100px) {
   .paths-grid, .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .moments-grid { grid-template-columns: repeat(2, 1fr); }
   .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -281,6 +289,18 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
   .foot-grid { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { *{animation:none!important;transition:none!important} .reveal{opacity:1;transform:none} }
+
+/* STICKY CTA */
+.sticky-cta { position: fixed; right: 20px; bottom: 20px; z-index: 200; display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+.sticky-cta a { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 100px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 14px 36px -10px rgba(0,0,0,0.7); white-space: nowrap; }
+.sticky-call { background: var(--gold); color: var(--bg) !important; }
+.sticky-call:hover { background: var(--gold-warm); }
+.sticky-event { background: var(--panel); color: var(--text) !important; border: 1px solid var(--gold); }
+.sticky-event:hover { color: var(--gold) !important; }
+@media (max-width: 780px) {
+  .sticky-cta { right: 12px; bottom: 12px; }
+  .sticky-cta a { padding: 12px 16px; font-size: 0.72rem; }
+}
 </style>
 </head>
 <body>
@@ -320,16 +340,27 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
       <p class="lede">Professional stage magic and roving close-up entertainment — kids parties, corporate events, adult themed shows, weddings and everything in between. Real doves, fire magic, comedy ventriloquism and audience participation that transforms any event.</p>
       <div class="hero-btns">
         <a class="btn btn-gold" href="#contact">Book Amazing Mr Twist</a>
-        <a class="btn btn-outline" href="#services">See Services &amp; Pricing</a>
+        <a class="btn btn-outline" href="#services">See Our Services</a>
       </div>
     </div>
     <div class="hero-video reveal">
       <div class="video-frame">
-        <div class="video-badge">Live · Tissue → Flame → Dove</div>
         <video controls playsinline preload="metadata" muted poster="/videos/hero_poster.jpg" aria-label="Amazing Mr Twist performing the tissue to flame to live dove magic effect at an outdoor event">
           <source src="/videos/hero_tissue_flame_dove.mp4" type="video/mp4">
         </video>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="stat-num">5★</div><div class="stat-label">Rated on Bark &amp; WOMO</div></div>
+      <div class="stat reveal"><div class="stat-num">20+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat reveal"><div class="stat-num">All Ages</div><div class="stat-label">Kids to Corporate</div></div>
+      <div class="stat reveal"><div class="stat-num">Insured</div><div class="stat-label">Full Public Liability</div></div>
     </div>
   </div>
 </section>
@@ -389,125 +420,21 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
     <div class="services-grid">
 
       <div class="svc-card reveal">
-        <div class="svc-icon">M</div>
-        <h3>Stage Magic Show</h3>
-        <div class="price">From $450 · 30 minutes</div>
-        <p>A high-energy 30-minute stage show with grand illusions, live doves, fire magic, comedy ventriloquism with a cheeky puppet, and audience participation throughout. Fully customisable for kids or adult audiences.</p>
-        <a class="learn-more" href="/services/magic-show.html">Full show details →</a>
+        <div class="svc-photo"><img src="/images/mr_twist_outdoor_stage_show.jpg" alt="Amazing Mr Twist performing outdoor stage magic show with branded banner" loading="lazy"></div>
+        <div class="svc-body">
+          <h3>Stage Magic Show</h3>
+          <p>A high-energy 30-minute stage show with grand illusions, live doves, fire magic, comedy ventriloquism with a cheeky puppet, and audience participation throughout. Fully customisable for kids or adult audiences.</p>
+          <a class="learn-more" href="/services/magic-show.html">See full show details →</a>
+        </div>
       </div>
 
       <div class="svc-card reveal">
-        <div class="svc-icon">R</div>
-        <h3>Roving Close-Up Magic</h3>
-        <div class="price">From $450 · First hour</div>
-        <p>Mingling entertainment for guests — sleight of hand card magic, dove illusions, rope tricks, money magic, interactive comedy. Perfect for cocktail hours, dinners and receptions. Balloon twisting available on request.</p>
-        <a class="learn-more" href="/services/roving-magic.html">Full roving details →</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SIGNATURE MOMENTS -->
-<section style="background:var(--bg2);">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">Signature Moments</div>
-      <h2 class="sec-title">What makes a <em>Mr Twist</em> show unforgettable</h2>
-    </div>
-    <div class="moments-grid">
-      <div class="moment reveal"><div class="icon">🕊️</div><h4>Live Doves</h4><p>Real trained doves appearing from tissue, fire and impossible places.</p></div>
-      <div class="moment reveal"><div class="icon">🔥</div><h4>Fire Magic</h4><p>Real flame effects that transform into birds, silk and impossible objects.</p></div>
-      <div class="moment reveal"><div class="icon">💍</div><h4>The Ring Trick</h4><p>A borrowed ring vanishes and reappears on the magician's shoelace. Guaranteed jaw-drop.</p></div>
-      <div class="moment reveal"><div class="icon">🎭</div><h4>Comedy Ventriloquism</h4><p>A cheeky puppet with a mind of its own — audience favourite, every show.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- GALLERY PREVIEW -->
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">Recent Work</div>
-      <h2 class="sec-title">From birthday parties to <em>black-tie</em> events</h2>
-      <p class="sec-sub">A glimpse of the range — kids shows, corporate events, themed characters and balloon art.</p>
-    </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-item tall">
-        <img src="/images/mr_twist_top_hat_dove.jpg" alt="Amazing Mr Twist in red top hat holding a white dove — professional magician Melbourne" loading="lazy" />
-        <div class="caption">Classic Magic</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/mr_twist_kids_birthday_show.jpg" alt="Amazing Mr Twist performing magic show at children's birthday party in Melbourne" loading="lazy" />
-        <div class="caption">Kids Birthday</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/kids_rainbow_balloon_group.jpg" alt="Group of children with colourful rainbow balloon sculpture by Amazing Mr Twist" loading="lazy" />
-        <div class="caption">Balloon Art</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/mr_twist_corporate_event_hoops.jpg" alt="Mr Twist at corporate customer birthday event with circus assistant and hoops" loading="lazy" />
-        <div class="caption">Corporate Event</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/mr_twist_adult_horror_show.jpg" alt="Amazing Mr Twist performing adult horror themed stage show with assistant" loading="lazy" />
-        <div class="caption">Adult Themed</div>
-      </div>
-      <div class="gallery-item tall">
-        <img src="/images/captain_twist_toucan_puppet.jpg" alt="Captain Twist pirate character with toucan puppet — themed events by Amazing Mr Twist" loading="lazy" />
-        <div class="caption">Captain Twist</div>
-      </div>
-    </div>
-    <div class="gallery-cta">
-      <a class="btn btn-outline" href="/gallery.html">See Full Gallery</a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PRICING -->
-<section style="background:var(--bg2);" id="pricing">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="sec-tag">Pricing</div>
-      <h2 class="sec-title">Three ways to <em>book</em></h2>
-      <p class="sec-sub">Straight pricing, no hidden fees. Travel outside metro Melbourne may add a small fee — always quoted upfront.</p>
-    </div>
-    <div class="pricing-grid">
-
-      <div class="price-card reveal">
-        <div class="letter">A.</div>
-        <h3>Roving Close-Up Magic</h3>
-        <div class="amount">$450</div>
-        <div class="amount-sub">First hour</div>
-        <p class="desc">Mingling sleight-of-hand magic for your guests — card magic, rope tricks, money magic, dove illusions, comedy interactions.</p>
-        <div class="extra">$200 per additional hour</div>
-        <a class="btn btn-outline" href="#contact" style="width:100%;justify-content:center;">Book Roving Magic</a>
-      </div>
-
-      <div class="price-card featured reveal">
-        <div class="letter">B.</div>
-        <h3>Stage Magic Show</h3>
-        <div class="amount">$450</div>
-        <div class="amount-sub">30-minute show</div>
-        <p class="desc">The full magic experience — doves, fire magic, illusions, comedy ventriloquism and audience participation.</p>
-        <div class="extra">Perfect stand-alone booking</div>
-        <a class="btn btn-gold" href="#contact" style="width:100%;justify-content:center;">Book The Show</a>
-      </div>
-
-      <div class="price-card reveal">
-        <div class="letter">C.</div>
-        <h3>Show + Roving Combo</h3>
-        <div class="amount">$600</div>
-        <div class="amount-sub">30-min show + 1 hr roving</div>
-        <p class="desc">The complete package — 30-minute stage show followed by roving magic or balloon twisting during the event.</p>
-        <div class="extra">$200 per additional hour</div>
-        <a class="btn btn-outline" href="#contact" style="width:100%;justify-content:center;">Book Combo</a>
+        <div class="svc-photo"><img src="/images/mr_twist_classic_magician_dove_rabbit.jpg" alt="Dan Stewart, Amazing Mr Twist, close-up magician holding rabbit and dove" loading="lazy"></div>
+        <div class="svc-body">
+          <h3>Roving Close-Up Magic</h3>
+          <p>Mingling entertainment for guests — sleight of hand card magic, dove illusions, rope tricks, money magic, interactive comedy. Perfect for cocktail hours, dinners and receptions. Balloon twisting available on request.</p>
+          <a class="learn-more" href="/services/roving-magic.html">See full roving details →</a>
+        </div>
       </div>
 
     </div>
@@ -543,6 +470,26 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
     </div>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- FINAL CTA / CONTACT -->
+<div class="final-cta" id="contact">
+  <div class="sec-tag">Book Amazing Mr Twist</div>
+  <h2>Ready to make it <em>unforgettable</em>?</h2>
+  <p>Call, text or email to check availability and lock in your date. Quick quotes usually within a few hours.</p>
+  <div class="hero-btns" style="margin-bottom:0;">
+    <a class="btn btn-gold" href="tel:+61425828503">Call 0425 828 503</a>
+    <a class="btn btn-outline" href="mailto:mrtwist.DS@gmail.com">Email Mr Twist</a>
+  </div>
+  <div class="final-contact">
+    <a href="tel:+61425828503">0425 828 503</a>
+    <a href="mailto:mrtwist.DS@gmail.com">mrtwist.DS@gmail.com</a>
+    <a href="https://www.amazingmrtwist.com" target="_blank" rel="noopener">amazingmrtwist.com</a>
+    <a href="https://www.google.com/maps/place/Amazing+Mr+Twist/@-37.9287611,145.3182996,15z/data=!4m6!3m5!1s0x6ad63ba196d91bfd:0xc98ca372d53d4c1e!8m2!3d-37.9287611!4d145.3182996!16s%2Fg%2F11hbnt5p46" target="_blank" rel="noopener">Get Directions</a>
+  </div>
+  <p style="margin-top:34px;color:var(--text-mute);font-size:0.9rem;">Already booked Amazing Mr Twist? <a href="/leave-review.html" style="color:var(--gold);border-bottom:1px solid rgba(212,165,116,0.4);">Leave a review →</a></p>
+</div>
 
 <div class="divider"></div>
 
@@ -588,25 +535,6 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- FINAL CTA / CONTACT -->
-<div class="final-cta" id="contact">
-  <div class="sec-tag">Book Amazing Mr Twist</div>
-  <h2>Ready to make it <em>unforgettable</em>?</h2>
-  <p>Call, text or email to check availability and lock in your date. Quick quotes usually within a few hours.</p>
-  <div class="hero-btns" style="margin-bottom:0;">
-    <a class="btn btn-gold" href="tel:+61425828503">Call 0425 828 503</a>
-    <a class="btn btn-outline" href="mailto:mrtwist.DS@gmail.com">Email Mr Twist</a>
-  </div>
-  <div class="final-contact">
-    <a href="tel:+61425828503">0425 828 503</a>
-    <a href="mailto:mrtwist.DS@gmail.com">mrtwist.DS@gmail.com</a>
-    <a href="https://www.amazingmrtwist.com" target="_blank" rel="noopener">amazingmrtwist.com</a>
-    <a href="https://www.google.com/maps/place/Amazing+Mr+Twist/@-37.9287611,145.3182996,15z/data=!4m6!3m5!1s0x6ad63ba196d91bfd:0xc98ca372d53d4c1e!8m2!3d-37.9287611!4d145.3182996!16s%2Fg%2F11hbnt5p46" target="_blank" rel="noopener">Get Directions</a>
-  </div>
-</div>
-
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -647,6 +575,11 @@ footer { border-top: 1px solid var(--line); padding: 50px 0 30px; background: va
     </div>
   </div>
 </footer>
+
+<div class="sticky-cta">
+  <a class="sticky-event" href="#audiences">Choose Your Event</a>
+  <a class="sticky-call" href="tel:+61425828503">Call 0425 828 503</a>
+</div>
 
 <script>
 const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.08 });
