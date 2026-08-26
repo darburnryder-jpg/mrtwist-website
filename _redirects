@@ -1,3 +1,3 @@
-# Cloudflare Pages redirects
-# 404 fallback (Cloudflare Pages auto-handles /404.html but this is explicit)
-/*  /404.html  404
+# Cloudflare redirects
+# 404 fallback is handled by wrangler.jsonc's assets.not_found_handling instead
+# (Workers static assets rejects a 404 status code here; Pages allowed it)
