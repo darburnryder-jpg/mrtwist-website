@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects
+# 404 fallback (Cloudflare Pages auto-handles /404.html but this is explicit)
+/*  /404.html  404

@@ -1,0 +1,7 @@
+# Amazing Mr Twist - amazingmrtwist.com
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+Disallow: /404.html
+
+Sitemap: https://amazingmrtwist.com/sitemap.xml

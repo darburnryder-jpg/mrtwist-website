@@ -1,0 +1,19 @@
+{
+  "name": "Amazing Mr Twist",
+  "short_name": "Mr Twist",
+  "icons": [
+    {
+      "src": "/images/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0A0E1B",
+  "background_color": "#0A0E1B",
+  "display": "standalone"
+}
