@@ -1,113 +1,78 @@
-# Amazing Mr Twist — Cloudflare Deploy Package
+# Amazing Mr Twist — Cloudflare Workers Deploy
 
-Static HTML site for **amazingmrtwist.com**. 11 pages, fully SEO-optimized, mobile-responsive, dark-themed premium design.
+Static site for **amazingmrtwist.com**. One clean homepage + 2 service pages + utility pages.
 
-## Deploy to Cloudflare Pages
+## Fixing your deploy (the important bit)
 
-**Option A — Direct upload (fastest):**
-1. Cloudflare Dashboard → Workers & Pages → Create → Pages → Upload assets
-2. Drag & drop the entire folder contents
-3. Set project name → deploy
-4. Custom domain: add `amazingmrtwist.com` in project settings → follow DNS instructions
+Your Cloudflare project is running as a **Worker** (that's what the `.workers.dev` URL means). Not Pages. The Pages settings you were fighting with won't work — Workers uses different config.
 
-**Option B — GitHub connection (recommended for ongoing updates):**
-1. Push this folder to a GitHub repo (any name)
-2. Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git
-3. Select repo, set build settings:
-   - Build command: (leave blank — no build needed)
-   - Build output directory: `/` (root)
-4. Deploy → connect custom domain in Pages settings
+### In Cloudflare dashboard, set these EXACTLY:
 
-Both options work. Option B lets you push changes to GitHub and Cloudflare rebuilds automatically.
+Go to your project (`small-rain-e731`) → Settings → Build:
 
-## Manual bits to replace BEFORE going live
+- **Framework preset:** None
+- **Build command:** *(leave blank — or set to `echo "no build"` if it insists)*
+- **Deploy command:** `npx wrangler deploy`
+- **Root directory:** `/mrtwist_v2` (if the repo has files in that subfolder) OR blank if files are at repo root
+- **Save**
 
-**1. Google Business Profile review link (leave-review.html)**
-Find this in `leave-review.html`:
+Then commit + push this whole folder to your GitHub repo. Cloudflare will auto-deploy in ~30 seconds.
+
+The `wrangler.toml` file in this folder tells Wrangler everything it needs:
+- Project name: `small-rain-e731` (matches your Cloudflare project)
+- Serves all static files from the folder
+- Uses `404.html` for missing pages automatically
+
+That's it. No `--project-name` flag needed. No manual config in the dashboard beyond the deploy command.
+
+### If you need to change the project name
+
+Edit line 4 of `wrangler.toml`:
 ```
-<a class="btn btn-gold" id="gbp-link" href="PASTE_GBP_REVIEW_LINK_HERE" target="_blank" rel="noopener">
-```
-Replace `PASTE_GBP_REVIEW_LINK_HERE` with Dan's actual GBP review link. Get it from:
-- Sign into Google Business Profile → your business → "Get more reviews" → copy short URL
-- Or format: `https://g.page/r/YOUR_PLACE_ID/review`
-
-**2. Second full-length video (currently missing)**
-The homepage hero uses the 9-second tissue→flame→dove clip. For a fuller showreel:
-- Upload the 4-min video to YouTube (unlisted or public)
-- Get the video ID from the URL
-- The gallery page already embeds Dan's existing YouTube (myd9i4Vv0OQ) — swap that ID for the new one if you'd rather use the longer video
-
-**3. Favicon (currently placeholder)**
-Current favicon is a placeholder "M" in gold on midnight blue. Generate the proper set:
-- Go to https://realfavicongenerator.net
-- Upload Dan's Amazing Mr Twist logo
-- Download the generated set
-- Replace all files in `/images/favicon/`
-
-## Post-launch checklist (do these AFTER Cloudflare goes live)
-
-1. **Google Search Console**
-   - Add property: `https://amazingmrtwist.com`
-   - Verify via Cloudflare DNS TXT record (fastest method)
-   - Submit sitemap: `https://amazingmrtwist.com/sitemap.xml`
-   - Request indexing for homepage + top pages
-
-2. **Google Analytics 4**
-   - Create GA4 property for amazingmrtwist.com
-   - Get Measurement ID (starts with G-...)
-   - Add gtag script to each HTML `<head>` (before `</head>`)
-   - Link GA4 property to Search Console
-
-3. **Google Business Profile**
-   - Ensure Dan's profile is claimed and verified
-   - Get direct review link → paste into `leave-review.html` (see above)
-
-4. **Test everything**
-   - Every page loads correctly
-   - Contact links (phone, email) work on mobile
-   - Video plays on iOS Safari and Android Chrome
-   - Forms/CTAs behave as expected
-   - No broken internal links
-
-## File structure
-
-```
-/
-├── index.html                         Homepage (hero video, all sections)
-├── kids-parties.html                  Audience landing page — kids market
-├── adult-themed-shows.html            Audience landing page — adult/corporate
-├── gallery.html                       Full photo gallery + YouTube embed
-├── reviews.html                       Bark & WOMO review platforms
-├── leave-review.html                  Review funnel (4-5★→GBP, 1-3★→dead end)
-├── privacy.html
-├── terms.html
-├── 404.html                           Custom "vanishing act" 404 page
-├── thank-you.html                     Post-contact-form thank you
-├── sitemap.xml
-├── robots.txt
-├── _headers                           Cloudflare Pages security + cache
-├── _redirects                         Cloudflare Pages redirects
-├── services/
-│   ├── magic-show.html                Stage show service page
-│   └── roving-magic.html              Roving magic service page
-├── images/
-│   ├── favicon/                       Favicon set (placeholder — regenerate)
-│   └── [13 optimized photos]          All under 250KB, EXIF-corrected
-└── videos/
-    ├── hero_tissue_flame_dove.mp4     3.1MB, H.264, faststart
-    └── hero_poster.jpg                Poster frame for video
+name = "your-project-name-here"
 ```
 
-## Design system
+## What's in this build
 
-- **Colors**: Deep midnight blue background (#0A0E1B), warm gold accent (#D4A574), off-white text
-- **Fonts**: Playfair Display (display serif) + Inter (body sans)
-- **Vibe**: Premium/theatrical, magic-appropriate, works for both kids and adult positioning
+**Homepage (index.html)** — single scrolling page:
+1. Nav
+2. Hero — text left, autoplaying dove/flame/tissue video right (portrait mobile-style)
+3. Credentials strip — 20+ years / 1000+ shows / All VIC / 5★ rated
+4. YouTube video section — Dan's showreel embedded
+5. Two services with photos — Stage Magic Show + Roving Close-Up
+6. About — portrait photo of Dan + bio
+7. Reviews — Bark + WOMO cards linking out
+8. FAQ
+9. Contact form — real form, submits via user's email client
 
-## Contact for updates
+**Other pages:**
+- `services/magic-show.html` — full stage show details
+- `services/roving-magic.html` — full roving details
+- `privacy.html`, `terms.html`
+- `404.html`, `thank-you.html`
 
-If you need site changes made, ping Ryder at Keystone Growth — this build is by Keystone.
+## Placeholders to replace before launch
+
+1. **Favicon** — currently a placeholder gold "M" in `/images/favicon/`. Regenerate at [realfavicongenerator.net](https://realfavicongenerator.net) using Dan's actual logo, replace all files in `/images/favicon/`.
+
+2. **The 4-minute showreel video** — currently the gallery/video sections use Dan's existing YouTube (myd9i4Vv0OQ). If you want the full 4-min video swapped in, upload it to YouTube unlisted, get the ID, then replace `myd9i4Vv0OQ` in `index.html` with the new ID.
+
+## Post-launch checklist
+
+1. **Google Search Console** — verify property, submit `sitemap.xml`, request indexing
+2. **GA4** — install measurement ID, link to Search Console
+3. **Test contact form** — submit yourself, confirm the email arrives at mrtwist.DS@gmail.com
+
+## Form note
+
+The contact form uses `mailto:` — when someone submits, it opens THEIR email client (Gmail, Apple Mail, etc.) with the message pre-filled and Dan's email pre-filled. They then hit send from their own email account.
+
+**Advantages:** zero backend, works instantly, no signup required, no monthly costs.
+
+**Downside:** on desktop, users without a configured email client see a browser prompt. Most users are on mobile where this works perfectly.
+
+**Upgrade later:** if you want form submissions to land in Dan's inbox automatically (no email client needed), sign up for [Formspree](https://formspree.io) (free tier), grab the endpoint URL, and swap the form's `onsubmit` for their `action=`. 10-minute change if/when you want it.
 
 ---
 
-Built: August 2026 · Keystone Growth · for Dan Stewart / Amazing Mr Twist
+Built August 2026 · Keystone Growth · for Dan Stewart / Amazing Mr Twist

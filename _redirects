@@ -1,6 +1,0 @@
-# Cloudflare redirects
-# 404 fallback is handled by wrangler.jsonc's assets.not_found_handling instead
-# (Workers static assets rejects a 404 status code here; Pages allowed it)
-
-# Gallery page retired — its photos now live on the service pages
-/gallery.html /services/magic-show.html 301
